@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stream</title>
+</head>
+<body>
+    <h3>Values</h3>
+    <ul id="list">
+    </ul>
+
+    <script>
+
+        let stream = new EventSource('/api/stream')
+        stream.onmessage = (event) => {
+            let list = document.getElementById('list');
+            let listItem = document.createElement('li');
+            listItem.appendChild(document.createTextNode(event.data));
+            list.appendChild(listItem);
+        };
+    </script>
+</body>
+</html>
